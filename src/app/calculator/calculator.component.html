@@ -1,0 +1,53 @@
+<body>
+    <!-- only 1 h1 per page -->
+    <header>
+        <h1>Salary Calculator</h1>
+    </header>
+
+    <h2>Add Employee</h2>
+    <input type="text" placeholder="First Name" id="firstName" class="inputBoxes" [(ngModel)]="firstName">
+    <input type="text" placeholder="Last Name" id="lastName" class="inputBoxes" [(ngModel)]="lastName">
+    <input type="number" placeholder="ID Number" id="idNumber" class="inputBoxes" [(ngModel)]="idNumber">
+    <input type="text" placeholder="Job Title" id="jobTitle" class="inputBoxes" [(ngModel)]="jobTitle">
+    <input type="number" placeholder="Annual Salary" id="annualSalary" class="inputBoxes" [(ngModel)]="annualSalary">
+    <button id="submitInfo" (click)="addNewEmp()">Submit</button>
+    <div id="employees">Employees</div>
+    
+    <table>
+        <thead>
+
+            <tr class="tableHead">
+                <th class="tableHead">
+                    First Name
+                </th>
+                <th class="tableHead">
+                    Last Name
+                </th>
+                <th class="tableHead">
+                    ID#
+                </th>
+                <th class="tableHead">
+                    Title
+                </th>
+                <th class="tableHead">
+                    Annual Salary
+                </th>
+            </tr>
+        </thead>
+        <tbody id="infoBody">
+            <tr *ngFor="let newEmployee of allEmployees;">
+              <td>{{ newEmployee.firstName }}</td>
+              <td>{{ newEmployee.lastName }}</td>
+              <td>{{ newEmployee.idNumber }}</td>
+              <td>{{ newEmployee.jobTitle }}</td>
+              <td>{{ newEmployee.annualSalary }}</td>
+            </tr>
+            
+<!-- when creating what I want to append it is good to hard code in html and then copy that over to the script -->
+        </tbody>
+    </table>
+    <div id="underTable"></div>
+    <h3>
+        Total Monthly Cost: $<span id="monthlyCost"></span>
+    </h3>
+</body>
