@@ -1,5 +1,8 @@
 <body>
-    <!-- only 1 h1 per page -->
+    <!-- TODO
+
+two decimal places for monthly 
+-->
     <header>
         <h1>Salary Calculator</h1>
     </header>
@@ -12,7 +15,7 @@
     <input type="number" placeholder="Annual Salary" id="annualSalary" class="inputBoxes" [(ngModel)]="annualSalary">
     <button id="submitInfo" (click)="addNewEmp()">Submit</button>
     <div id="employees">Employees</div>
-    
+
     <table>
         <thead>
 
@@ -36,18 +39,21 @@
         </thead>
         <tbody id="infoBody">
             <tr *ngFor="let newEmployee of allEmployees;">
-              <td>{{ newEmployee.firstName }}</td>
-              <td>{{ newEmployee.lastName }}</td>
-              <td>{{ newEmployee.idNumber }}</td>
-              <td>{{ newEmployee.jobTitle }}</td>
-              <td>{{ newEmployee.annualSalary }}</td>
+                <td>{{ newEmployee.firstName }}</td>
+                <td>{{ newEmployee.lastName }}</td>
+                <td>{{ newEmployee.idNumber }}</td>
+                <td>{{ newEmployee.jobTitle }}</td>
+                <td>{{ newEmployee.annualSalary }}</td>
             </tr>
-            
-<!-- when creating what I want to append it is good to hard code in html and then copy that over to the script -->
+
+
         </tbody>
     </table>
     <div id="underTable"></div>
     <h3>
-        Total Monthly Cost: $<span id="monthlyCost"></span>
+        Total Monthly Cost: $
+        <span id="monthlyCost" [ngClass]="{'overBudget': totalMonthlyCost > 20000}">
+            {{ totalMonthlyCost }}
+        </span>
     </h3>
 </body>
